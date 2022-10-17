@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormsComponent } from './forms.component';
+import { EditarBoyaComponent } from './editar-boya.component';
 
-describe('FormsComponent', () => {
-  let component: FormsComponent;
-  let fixture: ComponentFixture<FormsComponent>;
+describe('EditarBoyaComponent', () => {
+  let component: EditarBoyaComponent;
+  let fixture: ComponentFixture<EditarBoyaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormsComponent ]
+      declarations: [ EditarBoyaComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FormsComponent);
+    fixture = TestBed.createComponent(EditarBoyaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
