@@ -1,0 +1,24 @@
+
+<div class="card">
+  <div class="card-header">
+    Agregar boya
+  </div>
+  <div class="card-body">
+
+    <form ngNativeValidate [formGroup]="formularioBoya" (ngSubmit)="enviarDatos()">
+
+      <div class="mb-3">
+        <label for="" class="form-label">Ubicación:</label>
+        <input required type="text"
+          class="form-control" formControlName="ubicacion" name="" id="" placeholder="">
+      </div>
+
+      <div class="btn-group" role="group" aria-label="">
+        <button type="summit" class="btn btn-success">Agregar</button>
+        <button type="button" class="btn btn-primary" routerLink="/dispositivos">Cancelar</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+

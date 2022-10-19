@@ -7,18 +7,20 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">Id de la boya</th>
+            <th scope="col">ID</th>
             <th scope="col">Ubicación</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td> 1 </td>
-            <td> PUCMM </td>
+          <tr *ngFor="let boya of Boyas; let iControl = index">
+            <td> {{ boya.id_boya }} </td>
+            <td> {{ boya.ubicacion }} </td>
             <td>
-              <a routerLink= '/editar-boya' routerLinkActive="router-link-active"> Editar </a>
-              | Borrar
+              <a class="btn btn-info" routerLink= '/editar-boya/{{ boya.id_boya }}' routerLinkActive="router-link-active"> Editar </a>
+              |
+
+              <a class="btn btn-danger" (click)="borrarRegistro(boya.id_boya, iControl)" role="button">Borrar</a>
             </td>
 
           </tr>

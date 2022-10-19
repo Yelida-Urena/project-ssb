@@ -1,0 +1,40 @@
+
+
+<div class="container card">
+  <div class="card-header">
+      <a class="btn btn-success" routerLink="/agregar-boya"> Agregar nuevo dispositivo </a>
+
+  </div>
+  <div class="card-body">
+    <h1>Lista de Boyas</h1>
+    <div class="table">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Ubicación</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let boya of Boyas; let iControl = index">
+            <td> {{ boya.id_boya }} </td>
+            <td> {{ boya.ubicacion }} </td>
+            <td>
+              <a class="btn btn-info"  routerLinkActive="router-link-active">  </a>
+              |
+
+              <a class="btn btn-danger" role="button"> </a>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+  </div>
+
+</div>
+
+

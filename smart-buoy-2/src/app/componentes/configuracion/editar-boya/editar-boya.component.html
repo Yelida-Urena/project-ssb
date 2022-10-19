@@ -4,21 +4,23 @@
     Editar boya
   </div>
   <div class="card-body">
-    <form>
+    <form [formGroup]="formularioBoya" (ngSubmit)="enviarDatos()" >
+
       <div class="mb-3">
         <label for="" class="form-label">Id:</label>
         <input type="text"
           class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
       </div>
+
       <div class="mb-3">
         <label for="" class="form-label">Ubicación:</label>
-        <input type="text"
+        <input formControlName="ubicacion" type="text"
           class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
       </div>
 
       <div class="btn-group" role="group" aria-label="">
-        <button type="button" class="btn btn-success">Editar</button>
-        <button type="button" class="btn btn-primary">Cancelar</button>
+        <button type="submit" class="btn btn-warning">Modificar registro</button>
+        <button type="button" class="btn btn-primary" routerLink="/configuracion">Cancelar</button>
       </div>
 
 
