@@ -19,6 +19,7 @@ export class AgregarBoyaComponent implements OnInit {
     private router : Router) {
 
     this.formularioBoya = this.formulario.group({
+      id: [''],
       ubicacion: ['']
     });
 

@@ -13,6 +13,8 @@ import { AgregarBoyaComponent } from './componentes/dispositivos/agregar-boya/ag
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { IniciarSesionComponent } from './componentes/login/iniciar-sesion/iniciar-sesion.component';
+import { RegistrarseComponent } from './componentes/login/registrarse/registrarse.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     EditarBoyaComponent,
     AgregarBoyaComponent,
     DispositivosComponent,
+    IniciarSesionComponent,
+    RegistrarseComponent,
   ],
   imports: [
     BrowserModule,

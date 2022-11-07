@@ -5,6 +5,8 @@ import { ConfiguracionComponent } from './componentes/configuracion/configuracio
 import { StartPageComponent } from './componentes/start-page/start-page.component';
 import { EditarBoyaComponent } from './componentes/configuracion/editar-boya/editar-boya.component';
 import { AgregarBoyaComponent } from './componentes/dispositivos/agregar-boya/agregar-boya.component';
+import { RegistrarseComponent } from './componentes/login/registrarse/registrarse.component';
+import { IniciarSesionComponent } from './componentes/login/iniciar-sesion/iniciar-sesion.component';
 
 const routes: Routes = [
   {path: 'start-page', component: StartPageComponent},
@@ -13,8 +15,10 @@ const routes: Routes = [
   {path: 'editar-boya', component: EditarBoyaComponent},
   {path: 'editar-boya/:id', component: EditarBoyaComponent},
   {path: 'agregar-boya', component: AgregarBoyaComponent},
-  { path: '**', component: StartPageComponent },
-  { path: '',   redirectTo: 'start-page', pathMatch: 'full' },
+  {path: 'registrarse', component: RegistrarseComponent},
+  {path: 'iniciar-sesion', component: IniciarSesionComponent},
+  // { path: '**', component: StartPageComponent },
+  // { path: '',   redirectTo: 'start-page', pathMatch: 'full' },
 ];
 
 @NgModule({
