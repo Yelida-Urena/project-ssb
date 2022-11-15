@@ -3,79 +3,72 @@
   <div class="container">
     <div class="row">
       <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
-          <div class="panel border bg-white">
-            <div class="panel heading">
-              <h3 class="pt-3 font-weight-bold">
-                Login
-              </h3>
-            </div>
-
+        <div class="panel border bg-white">
+          <div class="panel-heading">
+            <h3 class="pt-3 font-weight-bold">
+              Iniciar Sesión
+            </h3>
           </div>
+          <div class="panel-body p-3">
+            <form class="" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <div class="form-group pt-3">
+                <div class="input-field">
+                  <i class="fa fa-user p-2"></i>
+                    <input class="input" type="text" formControlName="usuario" placeholder="Nombre de usuario" autocomplete="off"/>
+                    <div class="error" *ngIf="loginForm.controls['usuario'].hasError('required') && loginForm.controls['usuario'].touched">
+                      Por favor ingrese su nombre de usuario
+                    </div>
+                </div>
+              </div>
+              <div class="form-group pt-3">
+                <div class="input-field">
+                  <i class="fa fa-lock p-2"></i>
+                  <input class="input" [type]="type ? 'text' : 'password'" formControlName="contraseña" placeholder="Contraseña" />
+                  <div class="error" *ngIf="loginForm.controls['contraseña'].hasError('required') && loginForm.controls['contraseña'].touched">
+                    Por favor ingrese su contraseña
+                  </div>
+                  <i class="fa" [ngClass]="{'fa-eye-slash': !type,'fa-eye': type}" (click)="hideShowPassword()"></i>
+                </div>
+              </div>
+              <div class="form-inline fr mt-4">
+                <a id="forget" class="font-weight-bold" routerLink="/register">
+                  ¿Olvidó la contraseña?
+                </a>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block mt-4 w-100" [disabled]="loginForm.invalid">Iniciar sesión</button>
+              <div class="error" *ngIf="invalidLogin">
+                Usuario o contraseña incorrectos
+              </div>
+              <div class="text-center pt-4 text-muted">
+                ¿No tienes una cuenta?
+                <a id="forget" routerLink="/registrarse">
+                  Regístrate
+                </a>
+              </div>
+            </form>
+          </div>
+
+          <div class="text-center mb-3 mt-3 mx-3 bordert">
+
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="fa fa-facebook-f"></i>
+            </button>
+
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="fa fa-google"></i>
+            </button>
+
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="fa fa-twitter"></i>
+            </button>
+
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="fa fa-github"></i>
+            </button>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
-  <a routerLink="/register">
-    ¿No eres miembro? Regístrate
-  </a>
-
 </div>
-<div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-  <form>
-    <!-- <div class="text-center mb-3"> -->
-      <!-- <p>Sign in with:</p>
-      <button type="button" class="btn btn-link btn-floating mx-1">
-        <i class="fab fa-facebook-f"></i>
-      </button> -->
-<!--
-      <button type="button" class="btn btn-link btn-floating mx-1">
-        <i class="fab fa-google"></i>
-      </button>
-
-      <button type="button" class="btn btn-link btn-floating mx-1">
-        <i class="fab fa-twitter"></i>
-      </button>
-
-      <button type="button" class="btn btn-link btn-floating mx-1">
-        <i class="fab fa-github"></i>
-      </button>
-    </div>
-
-    <p class="text-center">or:</p> -->
-
-    <!-- Email input -->
-    <!-- <div class="form-outline mb-4">
-      <input type="email" id="loginName" class="form-control" />
-      <label class="form-label" for="loginName">Correo o nombre de usuario</label>
-    </div>
-
-    <-- Password input -->
-    <div class="form-outline mb-4">
-      <input type="password" id="loginPassword" class="form-control" />
-      <label class="form-label" for="loginPassword">Contraseña</label>
-    </div>
-
-    <!-- 2 column grid layout -->
-    <div class="row mb-4">
-      <div class="col-md-6 d-flex justify-content-center">
-        <!-- Checkbox -->
-        <div class="form-check mb-3 mb-md-0">
-          <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
-          <label class="form-check-label" for="loginCheck"> Recúerdame </label>
-        </div>
-      </div>
-
-      <div class="col-md-6 d-flex justify-content-center">
-        <!-- Simple link -->
-        <a href="#!">¿Olvidó su contraseña?</a>
-      </div>
-    </div>
-
-    <!-- Submit button -->
-    <button type="submit" class="btn btn-primary btn-block mb-4">Inicia sesión</button>
-
-    <!-- Register buttons -->
-    <div class="text-center">
-      <p>¿No es miembro? <a href="#!">Regístrate</a></p>
-    </div>
-  </form>
-</div> -->

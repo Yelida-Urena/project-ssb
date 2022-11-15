@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrarseComponent implements OnInit {
 
+  type: boolean | undefined;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  hideShowPassword() {
+    this.type = !this.type;
+  }
 }

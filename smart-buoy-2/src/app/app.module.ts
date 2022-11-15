@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { IniciarSesionComponent } from './componentes/login/iniciar-sesion/iniciar-sesion.component';
 import { RegistrarseComponent } from './componentes/login/registrarse/registrarse.component';
+import { MenuComponent } from './componentes/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { RegistrarseComponent } from './componentes/login/registrarse/registrars
     DispositivosComponent,
     IniciarSesionComponent,
     RegistrarseComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

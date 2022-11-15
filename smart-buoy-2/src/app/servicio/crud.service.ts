@@ -32,4 +32,9 @@ export class CrudService {
   editarBoya( id:any, datosBoya:any ) : Observable<any> {
     return this.clienteHttp.post( this.API + "?actualizar=" + id, datosBoya );
   }
+
+  login(loginData: any): Observable<any>{
+    return this.clienteHttp.get( this.API + "?consultar=" + loginData);
+  }
+
 }

@@ -1,66 +1,78 @@
-<div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-  <form>
-    <div class="text-center mb-3">
-      <p>Regístrate con:</p>
-      <button type="button" class="btn btn-link btn-floating mx-1">
-        <i class="fab fa-facebook-f"></i>
-      </button>
 
-      <button type="button" class="btn btn-link btn-floating mx-1">
-        <i class="fab fa-google"></i>
-      </button>
+<div class="outer">
+  <div class="container">
+    <div class="row">
+      <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+        <div class="panel border bg-white">
+          <div class="panel-heading">
+            <h3 class="pt-3 font-weight-bold">
+              Registrarse
+            </h3>
+          </div>
+          <div class="panel-body p-3">
+            <form class="">
+              <div class="form-group pt-3">
+                <div class="input-field">
+                  <i class="fa fa-user p-2"></i>
+                    <input class="input" type="text" placeholder="Nombre(s)" />
+                </div>
+              </div>
+              <div class="form-group pt-3">
+                <div class="input-field">
+                  <i class="fa fa-user p-2"></i>
+                    <input class="input" type="text" placeholder="Apellido(s)" />
+                </div>
+              </div>
+              <div class="form-group pt-3">
+                <div class="input-field">
+                  <i class="fa fa-user p-2"></i>
+                    <input class="input" type="text" placeholder="Correo electrónico" />
+                </div>
+              </div>
+              <div class="form-group pt-3">
+                <div class="input-field">
+                  <i class="fa fa-user p-2"></i>
+                    <input class="input" type="text" placeholder="Nombre de usuario" />
+                </div>
+              </div>
+              <div class="form-group pt-3">
+                <div class="input-field">
+                  <i class="fa fa-lock p-2"></i>
+                  <input class="input" [type]="type ? 'text' : 'password'" placeholder="Contraseña" />
+                  <i class="fa" [ngClass]="{'fa-eye-slash': !type,'fa-eye': type}" (click)="hideShowPassword()"></i>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block mt-4 w-100">Iniciar sesión</button>
+              <div class="text-center pt-4 text-muted">
+                ¿Ya tienes una cuenta?
+                <a id="forget" routerLink="/iniciar-sesion">
+                  Inicia sesión
+                </a>
+              </div>
+            </form>
+          </div>
 
-      <button type="button" class="btn btn-link btn-floating mx-1">
-        <i class="fab fa-twitter"></i>
-      </button>
+          <!-- <div class="text-center mb-3 mt-3 mx-3 bordert">
 
-      <button type="button" class="btn btn-link btn-floating mx-1">
-        <i class="fab fa-github"></i>
-      </button>
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="fa fa-facebook-f"></i>
+            </button>
+
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="fa fa-google"></i>
+            </button>
+
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="fa fa-twitter"></i>
+            </button>
+
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="fa fa-github"></i>
+            </button>
+          </div> -->
+
+        </div>
+      </div>
     </div>
-
-    <p class="text-center">o:</p>
-
-    <!-- Name input -->
-    <div class="form-outline mb-4">
-      <input type="text" id="registerName" class="form-control" />
-      <label class="form-label" for="registerName">Nombre</label>
-    </div>
-
-    <!-- Username input -->
-    <div class="form-outline mb-4">
-      <input type="text" id="registerUsername" class="form-control" />
-      <label class="form-label" for="registerUsername">Nombre de usuario</label>
-    </div>
-
-    <!-- Email input -->
-    <div class="form-outline mb-4">
-      <input type="email" id="registerEmail" class="form-control" />
-      <label class="form-label" for="registerEmail">Correo</label>
-    </div>
-
-    <!-- Password input -->
-    <div class="form-outline mb-4">
-      <input type="password" id="registerPassword" class="form-control" />
-      <label class="form-label" for="registerPassword">Contraseña</label>
-    </div>
-
-    <!-- Repeat Password input -->
-    <div class="form-outline mb-4">
-      <input type="password" id="registerRepeatPassword" class="form-control" />
-      <label class="form-label" for="registerRepeatPassword">Repita la contraseña</label>
-    </div>
-
-    <!-- Checkbox -->
-    <div class="form-check d-flex justify-content-center mb-4">
-      <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
-        aria-describedby="registerCheckHelpText" />
-      <label class="form-check-label" for="registerCheck">
-        He leído y acepto los términos y condiciones
-      </label>
-    </div>
-
-    <!-- Submit button -->
-    <button type="submit" class="btn btn-primary btn-block mb-3">Registrarse</button>
-  </form>
+  </div>
 </div>
