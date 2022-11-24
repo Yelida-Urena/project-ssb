@@ -3,26 +3,32 @@
     Configuración del dispositivo
   </div>
   <div class="card-body">
-    <div class="table">
+    <div class="table-responsive">
       <table class="table">
-        <thead>
+        <thead class="table-dark">
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Ubicación</th>
-            <th scope="col">Acciones</th>
+            <th scope="col" class="text-center">#</th>
+            <th scope="col" class="text-center">Ubicación</th>
+            <th scope="col" class="text-center"> Editar</th>
+            <th scope="col" class="text-center"> Borrar</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let boya of Boyas; let iControl = index">
-            <td> {{ boya.id_boya }} </td>
-            <td> {{ boya.ubicacion }} </td>
-            <td>
-              <a class="btn btn-info" routerLink= '/editar-boya/{{ boya.id_boya }}' routerLinkActive="router-link-active"> Editar </a>
-              |
+            <td class="text-center"> {{ iControl + 1 }} </td>
+            <td class="text-center"> {{ boya.ubicacion }} </td>
+            <td class="text-center">
+              <!-- <a class="btn btn-info" routerLink= '/editar-boya/{{ boya.id }}' routerLinkActive="router-link-active"> </a>-->
+                <a  class="btn btn-info" routerLink= '/editar-boya/{{ boya.id }}' routerLinkActive="router-link-active">
+                  <fa-icon [icon]="penIcon" width="50"></fa-icon>
+                </a>
 
-              <a class="btn btn-danger" (click)="borrarRegistro(boya.id_boya, iControl)" role="button">Borrar</a>
             </td>
-
+            <td class="text-center">
+              <a class="btn btn-danger" (click)="borrarRegistro(boya)" role="button">
+                <fa-icon [icon]="trashIcon" width="50"></fa-icon>
+              </a>
+            </td>
           </tr>
         </tbody>
       </table>

@@ -23,8 +23,8 @@
               <div class="form-group pt-3">
                 <div class="input-field">
                   <i class="fa fa-lock p-2"></i>
-                  <input class="input" [type]="type ? 'text' : 'password'" formControlName="contraseña" placeholder="Contraseña" />
-                  <div class="error" *ngIf="loginForm.controls['contraseña'].hasError('required') && loginForm.controls['contraseña'].touched">
+                  <input class="input" [type]="type ? 'text' : 'password'" formControlName="contrasena" placeholder="Contraseña" />
+                  <div class="error" *ngIf="loginForm.controls['contrasena'].hasError('required') && loginForm.controls['contrasena'].touched">
                     Por favor ingrese su contraseña
                   </div>
                   <i class="fa" [ngClass]="{'fa-eye-slash': !type,'fa-eye': type}" (click)="hideShowPassword()"></i>

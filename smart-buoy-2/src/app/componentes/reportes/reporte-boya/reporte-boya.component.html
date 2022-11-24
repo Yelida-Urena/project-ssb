@@ -1,0 +1,54 @@
+<div class="container card">
+  <div class="card-header" *ngFor="let boya of Boyas; let iControl = index">
+    Boya {{ boya.ubicacion }}
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col" class="text-center">Identificador</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let boya of Boyas; let iControl = index">
+            <td class="text-center"> {{ boya.id }} </td>
+          </tr>
+        </tbody>
+
+        <thead class="table-dark">
+          <tr>
+            <th scope="col" class="text-center">Ubicación</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let boya of Boyas; let iControl = index">
+            <td class="text-center"> {{boya.ubicacion}} </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col" class="text-center">Temperatura</th>
+            <th scope="col" class="text-center">Humedad</th>
+            <th scope="col" class="text-center">Fecha de la medición</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let sensor1 of Sensor_Temperatura; let iControl = index">
+            <td class="text-center"> {{sensor1.temperatura}} </td>
+            <td class="text-center"> {{sensor1.humedad}} </td>
+            <td class="text-center"> {{sensor1.fecha}} </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

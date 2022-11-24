@@ -10,39 +10,58 @@
             </h3>
           </div>
           <div class="panel-body p-3">
-            <form class="">
+            <form [formGroup]="formularioRegistro" (ngSubmit)="onSubmit()">
+
+              <!-- Nombre(s) -->
               <div class="form-group pt-3">
                 <div class="input-field">
                   <i class="fa fa-user p-2"></i>
-                    <input class="input" type="text" placeholder="Nombre(s)" />
+                    <input class="input" type="text" formControlName="nombre" placeholder="Nombre(s)" />
                 </div>
               </div>
+
+              <!-- Apellido(s) -->
               <div class="form-group pt-3">
                 <div class="input-field">
                   <i class="fa fa-user p-2"></i>
-                    <input class="input" type="text" placeholder="Apellido(s)" />
+                    <input class="input" type="text" formControlName="apellido" placeholder="Apellido(s)" />
                 </div>
               </div>
+
+              <!-- Correo electrónico -->
               <div class="form-group pt-3">
                 <div class="input-field">
                   <i class="fa fa-user p-2"></i>
-                    <input class="input" type="text" placeholder="Correo electrónico" />
-                </div>
+                    <input class="input" type="text" formControlName="correo" placeholder="Correo electrónico" />
+                    <div class="error" *ngIf="formularioRegistro.controls['usuario'].hasError('required') && formularioRegistro.controls['usuario'].touched">
+                      Por favor ingrese su correo electrónico
+                    </div>
+                  </div>
               </div>
+
+              <!-- Nombre de usuario -->
               <div class="form-group pt-3">
                 <div class="input-field">
                   <i class="fa fa-user p-2"></i>
-                    <input class="input" type="text" placeholder="Nombre de usuario" />
+                    <input class="input" type="text" formControlName="usuario" placeholder="Nombre de usuario" autocomplete="off"/>
+                    <div class="error" *ngIf="formularioRegistro.controls['usuario'].hasError('required') && formularioRegistro.controls['usuario'].touched">
+                      Por favor ingrese su nombre de usuario
+                    </div>
                 </div>
               </div>
+
+              <!-- Contraseña -->
               <div class="form-group pt-3">
                 <div class="input-field">
                   <i class="fa fa-lock p-2"></i>
-                  <input class="input" [type]="type ? 'text' : 'password'" placeholder="Contraseña" />
+                  <input class="input" [type]="type ? 'text' : 'password'" formControlName="contrasena" placeholder="Contraseña" />
+                  <div class="error" *ngIf="formularioRegistro.controls['contrasena'].hasError('required') && formularioRegistro.controls['contrasena'].touched">
+                    Por favor ingrese su contraseña
+                  </div>
                   <i class="fa" [ngClass]="{'fa-eye-slash': !type,'fa-eye': type}" (click)="hideShowPassword()"></i>
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary btn-block mt-4 w-100">Iniciar sesión</button>
+              <button type="submit" class="btn btn-primary btn-block mt-4 w-100">Registrarse</button>
               <div class="text-center pt-4 text-muted">
                 ¿Ya tienes una cuenta?
                 <a id="forget" routerLink="/iniciar-sesion">

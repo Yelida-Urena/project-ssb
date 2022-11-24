@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Boya } from './Boya';
+import { Boya } from '../modelos/Boya';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,28 +14,23 @@ export class CrudService {
 
   constructor( private clienteHttp:HttpClient ) { }
 
-  agregarBoya( datosBoya:Boya ) : Observable<any> {
-    return this.clienteHttp.post( this.API + "?insertar=1", datosBoya);
-  }
-
   obtenerBoyas(){
-    return this.clienteHttp.get( this.API );
+    return this.clienteHttp.get<Boya[]>( this.API + 'view.php' );
   }
 
-  borrarBoya( id:any ) : Observable<any> {
-    return this.clienteHttp.get( this.API + "?borrar=" + id);
+  obtenerBoya( id:any ) {
+    return this.clienteHttp.get<Boya[]>( this.API + 'view.php?id=' + id);
   }
 
-  obtenerBoya( id:any ) : Observable<any> {
-    return this.clienteHttp.get( this.API + "?consultar=" + id);
+  agregarBoya( datosBoya:any ) {
+    return this.clienteHttp.post( this.API + 'insert.php', datosBoya );
   }
 
-  editarBoya( id:any, datosBoya:any ) : Observable<any> {
-    return this.clienteHttp.post( this.API + "?actualizar=" + id, datosBoya );
+  borrarBoya( id:any ) {
+    return this.clienteHttp.delete( this.API + 'delete.php?id=' + id);
   }
 
-  login(loginData: any): Observable<any>{
-    return this.clienteHttp.get( this.API + "?consultar=" + loginData);
+  editarBoya( datosBoya:any ) {
+    return this.clienteHttp.put( this.API + "update.php", datosBoya );
   }
-
 }

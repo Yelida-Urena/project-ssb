@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 import { CrudService } from 'src/app/servicio/crud.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-agregar-boya',
@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
 })
 export class AgregarBoyaComponent implements OnInit {
 
-  formularioBoya: FormGroup;
+  formularioBoya: any;
+
 
   constructor(
     public formulario:FormBuilder,
@@ -19,21 +20,19 @@ export class AgregarBoyaComponent implements OnInit {
     private router : Router) {
 
     this.formularioBoya = this.formulario.group({
-      id: [''],
-      ubicacion: ['']
+      ubicacion: ['', Validators.required]
     });
 
   }
 
   ngOnInit(): void {
+
   }
 
   enviarDatos(): any {
-    console.log("KK");
     console.log(this.formularioBoya.value);
 
-    this.crudService.agregarBoya(this.formularioBoya.value).subscribe(respuesta => {
-
+    this.crudService.agregarBoya(this.formularioBoya.value).subscribe((data:any) => {
       this.router.navigateByUrl('/dispositivos');
     });
 

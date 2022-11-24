@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CrudService } from 'src/app/servicio/crud.service';
-import { Boya } from 'src/app/servicio/Boya';
+import { Boya } from 'src/app/modelos/Boya';
+
+import { faPen } from '@fortawesome/free-solid-svg-icons'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-configuracion',
@@ -12,23 +15,24 @@ export class ConfiguracionComponent implements OnInit {
 
   Boyas : any;
 
+  penIcon = faPen;
+  trashIcon = faTrashAlt;
+
   constructor(
     private crudService:CrudService,
   ) { }
 
   ngOnInit(): void {
-    this.crudService.obtenerBoyas().subscribe(respuesta => {
-      console.log(respuesta);
-      this.Boyas = respuesta;
+    this.crudService.obtenerBoyas().subscribe((data:any) => {
+      console.log(data);
+      this.Boyas = data.data;
     });
   }
 
-  borrarRegistro(id: any,iControl: any) {
-    console.log(id);
-    console.log(iControl);
+  borrarRegistro(boya:any) {
     if(window.confirm("¿Está seguro que desea borrar este registro?")) {
-      this.crudService.borrarBoya(id).subscribe((respuesta) => {
-        this.Boyas.splice(iControl, 1);
+      this.crudService.borrarBoya(boya.id).subscribe((data) => {
+        this.Boyas = this.Boyas.filter((u: any) => u != boya);
       });
     }
 

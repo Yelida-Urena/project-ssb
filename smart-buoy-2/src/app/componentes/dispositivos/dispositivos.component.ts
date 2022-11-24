@@ -15,9 +15,9 @@ export class DispositivosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.crudService.obtenerBoyas().subscribe(respuesta => {
-      console.log(respuesta);
-      this.Boyas = respuesta;
+    this.crudService.obtenerBoyas().subscribe((data:any) => {
+      console.log(data);
+      this.Boyas = data.data;
     });
   }
 

@@ -29,7 +29,7 @@
               </li>
 
               <li class="nav-item dropdown">
-                <a class="nav-link" routerLink="/reporte" routerLinkActive="active">Solicitar reportes</a>
+                <a class="nav-link" routerLink="/reportes" routerLinkActive="active">Solicitar reportes</a>
               </li>
               <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Solicitar reportes</a>
@@ -52,11 +52,20 @@
                 <a class="nav-link" routerLink="/about-us" routerLinkActive="active">Sobre Nosotros</a>
               </li>
 
-              <li class="nav-item ml-4">
-                <a class="navbar-brand" routerLink="/iniciar-sesion" routerLinkActive="active">
-                  <img src="/assets/images/user1.png" width="30" height="30" alt="">
-                </a>
+              <li class="nav-item">
+                <a class="nav-link" *ngIf="loginbtn" routerLink="/iniciar-sesion" routerLinkActive="active">Iniciar sesión</a>
               </li>
+
+              <li class="nav-item">
+                <a class="nav-link" *ngIf="logoutbtn" (click)="logout()" >Desconectarse</a>
+                <!-- <button type="button" *ngIf="logoutbtn" class="btn btn-block" (click)="logout()">Desconectarse</button> -->
+              </li>
+
+              <!-- <li class="nav-item ml-4">
+                <a class="navbar-brand" routerLink="/iniciar-sesion" routerLinkActive="active">
+                  <img src="/assets/images/login.png" width="30" height="30" alt="">
+                </a>
+              </li> -->
             </ul>
           </div>
         </div>

@@ -1,0 +1,43 @@
+<div class="container card">
+  <div class="card-header">
+    Elija la boya y rango de fecha de la que desea el reporte
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col" class="text-center">Ubicación</th>
+            <th scope="col" class="text-center">Rango de fecha</th>
+            <th scope="col" class="text-center"> Ver reporte </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let boya of Boyas; let iControl = index">
+            <td class="text-center"> {{ boya.ubicacion }} </td>
+            <td>
+              <!-- <mat-form-field appearance="fill">
+                <mat-label>Enter a date range</mat-label>
+                <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate placeholder="Start date">
+                  <input matEndDate placeholder="End date">
+                </mat-date-range-input>
+                <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              </mat-form-field> -->
+            </td>
+            <td class="text-center">
+              <a class="btn btn-success"  role="button">
+                <!-- <fa-icon [icon]=""></fa-icon> -->
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+  </div>
+
+</div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CrudService } from 'src/app/servicio/crud.service';
 
 @Component({
@@ -10,8 +10,9 @@ import { CrudService } from 'src/app/servicio/crud.service';
   styleUrls: ['./editar-boya.component.css']
 })
 export class EditarBoyaComponent implements OnInit {
-  formularioBoya: FormGroup;
-  id : any;
+
+  formularioBoya: any;
+  boya_id: any;
 
 
   constructor(
@@ -19,31 +20,35 @@ export class EditarBoyaComponent implements OnInit {
     private crudService : CrudService,
     public formulario : FormBuilder,
     public router : Router
-
   ) {
-    this.id = this.activeRouter.snapshot.paramMap.get('id');
-    console.log(this.id);
-    this.crudService.obtenerBoya(this.id).subscribe(respuesta => {
-      console.log(respuesta);
-      this.formularioBoya.setValue({
-        ubicacion: respuesta[0]['ubicacion']
-      });
-    });
+
     this.formularioBoya = this.formulario.group({
-      ubicacion: ['']
+      id: ['', Validators.required],
+      ubicacion: ['', Validators.required]
     });
   }
 
 
   ngOnInit(): void {
+    this.boya_id = this.activeRouter.snapshot.params['id'];
+    //console.log(this.boya_id);
+    if (this.boya_id > 0) {
+      this.crudService.obtenerBoya(this.boya_id).subscribe((data:any) => {
+        //console.log(data.data);
+        this.formularioBoya.patchValue(data.data);
+      });
+    }
   }
 
   enviarDatos():any {
-    console.log(this.id);
-    console.log(this.formularioBoya.value);
-    this.crudService.editarBoya(this.id, this.formularioBoya.value).subscribe(() =>{
+    // console.log(this.boya_id);
+    // console.log(this.formularioBoya.value);
+    this.crudService.editarBoya(this.formularioBoya.value).subscribe(() =>{
+      this.router.navigateByUrl('/configuracion');
+    },error => {
+      alert(error);
     });
-    this.router.navigateByUrl('/configuracion');
+
   }
 
 }

@@ -7,8 +7,11 @@ import { EditarBoyaComponent } from './componentes/configuracion/editar-boya/edi
 import { AgregarBoyaComponent } from './componentes/dispositivos/agregar-boya/agregar-boya.component';
 import { RegistrarseComponent } from './componentes/login/registrarse/registrarse.component';
 import { IniciarSesionComponent } from './componentes/login/iniciar-sesion/iniciar-sesion.component';
+import { ReportesComponent } from './componentes/reportes/reportes.component';
+import { ReporteBoyaComponent } from './componentes/reportes/reporte-boya/reporte-boya.component';
 
 const routes: Routes = [
+  { path: '',   component: StartPageComponent },
   {path: 'start-page', component: StartPageComponent},
   {path: 'configuracion', component: ConfiguracionComponent},
   {path: 'dispositivos', component: DispositivosComponent},
@@ -17,6 +20,8 @@ const routes: Routes = [
   {path: 'agregar-boya', component: AgregarBoyaComponent},
   {path: 'registrarse', component: RegistrarseComponent},
   {path: 'iniciar-sesion', component: IniciarSesionComponent},
+  {path: 'reportes', component: ReportesComponent},
+  {path: 'reporte/:id', component: ReporteBoyaComponent},
   // { path: '**', component: StartPageComponent },
   // { path: '',   redirectTo: 'start-page', pathMatch: 'full' },
 ];

@@ -9,21 +9,22 @@
     <h1>Lista de Boyas</h1>
     <div class="table">
       <table class="table">
-        <thead>
+        <thead class="table-dark">
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Ubicación</th>
-            <th scope="col">Acciones</th>
+            <th scope="col" class="text-center">#</th>
+            <th scope="col" class="text-center">Ubicación</th>
+            <th scope="col" class="text-center"></th>
+            <th scope="col" class="text-center"></th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let boya of Boyas; let iControl = index">
-            <td> {{ boya.id_boya }} </td>
-            <td> {{ boya.ubicacion }} </td>
-            <td>
-              <a class="btn btn-info"  routerLinkActive="router-link-active">  </a>
-              |
-
+            <td class="text-center"> {{ iControl + 1 }} </td>
+            <td class="text-center"> {{ boya.ubicacion }} </td>
+            <td class="text-center">
+              <a class="btn btn-info" routerLink= '/editar-boya/{{ boya.id }}' routerLinkActive="router-link-active">  </a>
+            </td>
+            <td class="text-center">
               <a class="btn btn-danger" role="button"> </a>
             </td>
 
