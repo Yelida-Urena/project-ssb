@@ -11,11 +11,14 @@ import html2canvas from 'html2canvas';
 import { from } from 'rxjs';
 declare var $: any
 
+import { DateTimeService, LineSeriesService, DateTimeCategoryService, StripLineService } from '@syncfusion/ej2-angular-charts';
+
 
 @Component({
   selector: 'app-reporte-boya',
   templateUrl: './reporte-boya.component.html',
-  styleUrls: ['./reporte-boya.component.css']
+  styleUrls: ['./reporte-boya.component.css'],
+  providers: [DateTimeService, LineSeriesService, DateTimeCategoryService, StripLineService]
 })
 export class ReporteBoyaComponent implements OnInit {
 
@@ -30,14 +33,39 @@ export class ReporteBoyaComponent implements OnInit {
   from: any;
   to: any;
 
+  single: any[] = [];
 
+  multi: any[] = [];
+
+
+  view: any[] = [700, 300];
+
+  // options
+  showXAxis = true;
+  showYAxis = true;
+  gradient = false;
+  showLegend = true;
+  showXAxisLabel = true;
+  xAxisLabel = 'humedad';
+  showYAxisLabel = true;
+  yAxisLabel = 'temperatura';
+
+  public primaryXAxis: any;
+  public chartData: any[] = [];
+  public title: string = '';
+  public primaryYAxis: any;
+
+  public primaryXAxis2: any;
+  public chartData2: any[] = [];
+  public title2: string = '';
+  public primaryYAxis2: any;
 
   constructor(
     private service: CrudService,
     private serviceSensor: SensoresService,
     private activeRouter: ActivatedRoute,
     private dates: ReportesService
-  ) { }
+  ) {  }
 
   ngOnInit(): void {
 
@@ -58,7 +86,26 @@ export class ReporteBoyaComponent implements OnInit {
     this.serviceSensor.obtenerDatos(this.boya_id, this.from, this.to).subscribe((data:any) => {
       this.sensorTemp = data.data;
       console.log(data);
+      console.log(this.sensorTemp);
+      this.single = data.data.map((datum:any)  =>  ({ name: datum.temperatura, value: datum.humedad}));
+      this.chartData = data.data.map((datum:any)  =>  ({ y: datum.temperatura, x: new Date(datum.fecha)}));
+      this.chartData2 = data.data.map((datum:any)  =>  ({ y: datum.humedad, x: new Date(datum.fecha)}));
+      // this.multi = data.data.map((datum:any) => datum.series = datum.series.map( (dataItem:any) => { dataItem.name = new Date(dataItem.name); return dataItem;}));
     });
+
+    this.primaryXAxis = {
+      valueType: 'DateTime',
+      title: 'Fecha',
+      labelFormat: 'd-MMM-y'
+  };
+  this.primaryYAxis = {
+     title: 'Temperatura (°C)'
+  };
+  this.primaryYAxis2 = {
+    title: 'Humedad (%)'
+ };
+ this.title = 'Temperatura (°C) de la Boya #' + this.boya_id;
+ this.title2 = 'Humedad (%) de la Boya #' + this.boya_id;
 
   }
 
@@ -68,6 +115,18 @@ export class ReporteBoyaComponent implements OnInit {
 
     this.from = year1 + '-' + month1 + '-' + day1;
     this.to = year2 + '-' + month2 + '-' + day2;
+  }
+
+  onSelect(data:any): void {
+    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+  }
+
+  onActivate(data:any): void {
+    console.log('Activate', JSON.parse(JSON.stringify(data)));
+  }
+
+  onDeactivate(data:any): void {
+    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
 
   descargarReporte(){

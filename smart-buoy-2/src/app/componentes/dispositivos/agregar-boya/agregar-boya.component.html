@@ -13,6 +13,10 @@
           class="form-control" formControlName="ubicacion" name="" id="" placeholder="Introduzca la ubicación de la boya">
       </div>
 
+      <agm-map [latitude]="lat" [longitude]="lng">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
+
       <div class="btn-group d-flex justify-content-center" role="group" aria-label="">
         <button type="summit" class="btn btn-success">AGREGAR</button>
         <button type="button" class="btn btn-primary" routerLink="/dispositivos">CANCELAR</button>

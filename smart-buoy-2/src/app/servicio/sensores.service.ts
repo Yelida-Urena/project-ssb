@@ -18,8 +18,9 @@ export class SensoresService {
     ) { }
 
   obtenerDatos(idBoya:any, from:string, to:string) {
-    const params = new HttpParams().set('from', from).set('to', to);
+    // const params = new HttpParams().set('from', from).set('to', to);
 
-    return this.clienteHttp.get<SensorTemperatura[]>( this.API + '/viewSensorTemp.php?id_boya=' + idBoya, {params: params});
+    // return this.clienteHttp.get<SensorTemperatura[]>( this.API + '/viewSensorTemp.php?id_boya=' + idBoya, {params: params});
+    return this.clienteHttp.post<SensorTemperatura[]>( this.API + '/viewSensor1.php?id_boya=' + idBoya, from);
   }
 }

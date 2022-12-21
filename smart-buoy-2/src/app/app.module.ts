@@ -30,6 +30,12 @@ import { NgChartsModule } from 'ng2-charts';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
+import { ChartModule } from '@syncfusion/ej2-angular-charts';
+
+import { GoogleMapsModule } from '@angular/google-maps'
+
+import { AgmCoreModule } from '@agm/core';
+
 
 @NgModule({
   declarations: [
@@ -57,7 +63,12 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     FontAwesomeModule,
     FormsModule,
     NgbDatepickerModule,
-    NgxChartsModule
+    NgxChartsModule,
+    ChartModule,
+    GoogleMapsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBNnbwvBf3cNqXLAOG8bt5zpuFmgeiIzjs',
+    })
   ],
   providers: [
   ],

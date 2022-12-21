@@ -18,64 +18,79 @@
         </div>
       </div> -->
 
-      <table class="table table-borderless align-middle mb-0 bg-white text-center">
-        <thead class="bg-light">
-          <tr class="table-info">
-            <th scope="col" colspan="3" >Identificador</th>
-          </tr>
-        </thead>
+      <div class="container">
+        <table class="table table-borderless align-middle mb-0 bg-white text-center">
+          <thead class="bg-light">
+            <tr class="table-info">
+              <th scope="col" colspan="3" >Identificador</th>
+            </tr>
+          </thead>
 
-        <tbody>
-          <tr>
-            <td  colspan="3"> {{boya_id}} </td>
-          </tr>
-        </tbody>
+          <tbody>
+            <tr>
+              <td  colspan="3"> {{boya_id}} </td>
+            </tr>
+          </tbody>
 
-        <thead class="bg-light">
-          <tr class="table-info">
-            <th scope="col" colspan="3">Nombre</th>
-          </tr>
-        </thead>
+          <thead class="bg-light">
+            <tr class="table-info">
+              <th scope="col" colspan="3">Nombre</th>
+            </tr>
+          </thead>
 
-        <tbody>
-          <tr >
-            <td  colspan="3"> {{Boya.nombre}} </td>
-          </tr>
-        </tbody>
+          <tbody>
+            <tr >
+              <td  colspan="3"> {{Boya.nombre}} </td>
+            </tr>
+          </tbody>
 
-        <thead class="bg-light">
-          <tr class="table-info">
-            <th scope="col" colspan="3">Ubicación</th>
-          </tr>
-        </thead>
+          <thead class="bg-light">
+            <tr class="table-info">
+              <th scope="col" colspan="3">Ubicación</th>
+            </tr>
+          </thead>
 
-        <tbody>
-          <tr >
-            <td colspan="3"> {{Boya.ubicacion}} </td>
-          </tr>
-        </tbody>
+          <tbody>
+            <tr >
+              <td colspan="3"> {{Boya.ubicacion}} </td>
+            </tr>
+          </tbody>
 
-        <thead class="bg-light">
-          <tr class="table-info">
-            <th scope="col" >Temperatura</th>
-            <th scope="col" >Humedad</th>
-            <th scope="col" >Fecha de la medición</th>
-          </tr>
-        </thead>
+          <thead class="bg-light">
+            <tr class="table-info">
+              <th scope="col" >Temperatura</th>
+              <th scope="col" >Humedad</th>
+              <th scope="col" >Fecha de la medición</th>
+            </tr>
+          </thead>
 
-        <tbody>
-          <tr *ngFor="let sensor1 of sensorTemp; let iControl = index">
-            <td > {{sensor1.temperatura}} </td>
-            <td > {{sensor1.humedad}} </td>
-            <td > {{sensor1.fecha}} </td>
-          </tr>
-        </tbody>
-      </table>
+          <tbody>
+            <tr name = "sensor1" *ngFor="let sensor1 of sensorTemp; let iControl = index">
+              <td > {{sensor1.temperatura}} </td>
+              <td > {{sensor1.humedad}} </td>
+              <td > {{sensor1.fecha}} </td>
+            </tr>
+          </tbody>
+        </table>
+
+      <div class="w-100" style="display:inline">
 
 
-      <div style="display:block; width: 500px">
+        <ejs-chart id="chart-container1" [primaryXAxis]='primaryXAxis'[primaryYAxis]='primaryYAxis' [title]='title'>
+          <e-series-collection>
+              <e-series [dataSource]='chartData' type='Line' xName='x' yName='y' name='Temperatura'></e-series>
+          </e-series-collection>
+        </ejs-chart>
+
+        <ejs-chart id="chart-container2" [primaryXAxis]='primaryXAxis'[primaryYAxis]='primaryYAxis2' [title]='title2'>
+          <e-series-collection>
+              <e-series [dataSource]='chartData2' type='Line' xName='x' yName='y' name='Humedad'></e-series>
+          </e-series-collection>
+        </ejs-chart>
 
       </div>
+
+    </div>
 
 
     </div>
