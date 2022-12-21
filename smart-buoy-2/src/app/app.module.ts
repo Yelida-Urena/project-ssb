@@ -27,6 +27,7 @@ import { NgbDate, NgbCalendar, NgbDatepickerModule } from '@ng-bootstrap/ng-boot
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgChartsModule } from 'ng2-charts';
+
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
@@ -47,7 +48,6 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
   ],
   imports: [
     BrowserModule,
-    NgChartsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     TooltipModule.forRoot(),
