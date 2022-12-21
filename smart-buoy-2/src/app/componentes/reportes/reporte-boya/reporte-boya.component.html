@@ -1,54 +1,88 @@
-<div class="container card">
-  <div class="card-header" *ngFor="let boya of Boyas; let iControl = index">
-    Boya {{ boya.ubicacion }}
-  </div>
-  <div class="card-body">
-    <div class="table-responsive">
-      <table class="table">
-        <thead class="table-dark">
-          <tr>
-            <th scope="col" class="text-center">Identificador</th>
+
+    <div id="htmlData">
+      <!-- <div class="row float-right">
+        <nav class="navbar navbar-light bg-light">
+          <a class="navbar-brand" href="index.html">
+            <img src="/assets/images/icon.png" width="30" height="30" alt="">
+            Sensorial Smart Buoy 2.0
+          </a>
+        </nav>
+      </div> -->
+
+      <!-- <div class="row text-center py-3">
+        <div class="col-8">
+          <h1>Reporte boya #{{boya_id}}</h1>
+        </div>
+        <div class="col-4">
+          <h1>Desde {{model2}} hasta {{toDate}}</h1>
+        </div>
+      </div> -->
+
+      <table class="table table-borderless align-middle mb-0 bg-white text-center">
+        <thead class="bg-light">
+          <tr class="table-info">
+            <th scope="col" colspan="3" >Identificador</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr *ngFor="let boya of Boyas; let iControl = index">
-            <td class="text-center"> {{ boya.id }} </td>
+          <tr>
+            <td  colspan="3"> {{boya_id}} </td>
           </tr>
         </tbody>
 
-        <thead class="table-dark">
-          <tr>
-            <th scope="col" class="text-center">Ubicación</th>
+        <thead class="bg-light">
+          <tr class="table-info">
+            <th scope="col" colspan="3">Nombre</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr *ngFor="let boya of Boyas; let iControl = index">
-            <td class="text-center"> {{boya.ubicacion}} </td>
+          <tr >
+            <td  colspan="3"> {{Boya.nombre}} </td>
+          </tr>
+        </tbody>
+
+        <thead class="bg-light">
+          <tr class="table-info">
+            <th scope="col" colspan="3">Ubicación</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr >
+            <td colspan="3"> {{Boya.ubicacion}} </td>
+          </tr>
+        </tbody>
+
+        <thead class="bg-light">
+          <tr class="table-info">
+            <th scope="col" >Temperatura</th>
+            <th scope="col" >Humedad</th>
+            <th scope="col" >Fecha de la medición</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let sensor1 of sensorTemp; let iControl = index">
+            <td > {{sensor1.temperatura}} </td>
+            <td > {{sensor1.humedad}} </td>
+            <td > {{sensor1.fecha}} </td>
           </tr>
         </tbody>
       </table>
 
 
-      <table class="table">
-        <thead class="table-dark">
-          <tr>
-            <th scope="col" class="text-center">Temperatura</th>
-            <th scope="col" class="text-center">Humedad</th>
-            <th scope="col" class="text-center">Fecha de la medición</th>
-          </tr>
-        </thead>
+      <div style="display:block; width: 500px">
 
-        <tbody>
-          <tr *ngFor="let sensor1 of Sensor_Temperatura; let iControl = index">
-            <td class="text-center"> {{sensor1.temperatura}} </td>
-            <td class="text-center"> {{sensor1.humedad}} </td>
-            <td class="text-center"> {{sensor1.fecha}} </td>
-          </tr>
-        </tbody>
-      </table>
+      </div>
+
+
     </div>
+
+
+  <div class="pt-1">
+    <button class="btn col col-lg-4 btn-warning btn-block ml-4" (click)="descargarReporte()">Descargar PDF</button>
   </div>
 
-</div>
+

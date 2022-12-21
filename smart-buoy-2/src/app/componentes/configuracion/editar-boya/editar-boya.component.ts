@@ -24,6 +24,7 @@ export class EditarBoyaComponent implements OnInit {
 
     this.formularioBoya = this.formulario.group({
       id: ['', Validators.required],
+      nombre: ['', Validators.required],
       ubicacion: ['', Validators.required]
     });
   }

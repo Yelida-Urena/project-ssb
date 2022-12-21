@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { CrudService } from 'src/app/servicio/crud.service';
 
+import { faImage } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-dispositivos',
   templateUrl: './dispositivos.component.html',
@@ -9,6 +11,7 @@ import { CrudService } from 'src/app/servicio/crud.service';
 })
 export class DispositivosComponent implements OnInit {
   Boyas : any;
+  camara = faImage;
 
   constructor(
     private crudService:CrudService,

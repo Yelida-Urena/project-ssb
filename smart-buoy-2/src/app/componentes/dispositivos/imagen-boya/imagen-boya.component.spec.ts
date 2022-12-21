@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReportesComponent } from './reportes.component';
+import { ImagenBoyaComponent } from './imagen-boya.component';
 
-describe('ReportesComponent', () => {
-  let component: ReportesComponent;
-  let fixture: ComponentFixture<ReportesComponent>;
+describe('ImagenBoyaComponent', () => {
+  let component: ImagenBoyaComponent;
+  let fixture: ComponentFixture<ImagenBoyaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReportesComponent ]
+      declarations: [ ImagenBoyaComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ReportesComponent);
+    fixture = TestBed.createComponent(ImagenBoyaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

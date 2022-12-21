@@ -40,7 +40,8 @@ export class LoginService {
   //   localStorage.removeItem('token');
   // }
 
-  // isLoggegIn() {
+   isLoggegIn() {
+    return localStorage.getItem("username")!=null;
   //   const userToken = this.getToken();
 
   //   if (userToken != null) {
@@ -48,6 +49,16 @@ export class LoginService {
   //   }
 
   //   return false;
-  // }
+   }
+
+   haveRoleAccess(menuname:any){
+    const role = localStorage.getItem("role");
+
+    if (role == 'admin') {
+      return true;
+    }else{
+      return false;
+    }
+   }
 
 }

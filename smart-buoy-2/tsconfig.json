@@ -18,9 +18,13 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "es2020",
+    "allowSyntheticDefaultImports": true,
     "lib": [
       "es2020",
       "dom"
+    ],
+    "types": [
+      "@angular/localize"
     ],
     "useDefineForClassFields": false
   },

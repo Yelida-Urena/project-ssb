@@ -50,6 +50,8 @@ export class IniciarSesionComponent implements OnInit {
 
     this.submitted = true;
 
+    localStorage.setItem("username", this.loginForm.controls['usuario'].value);
+
     console.log(this.loginForm.value);
     if (this.loginForm.invalid)
     return;

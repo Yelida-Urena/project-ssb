@@ -9,19 +9,49 @@ import { RegistrarseComponent } from './componentes/login/registrarse/registrars
 import { IniciarSesionComponent } from './componentes/login/iniciar-sesion/iniciar-sesion.component';
 import { ReportesComponent } from './componentes/reportes/reportes.component';
 import { ReporteBoyaComponent } from './componentes/reportes/reporte-boya/reporte-boya.component';
+import { ImagenBoyaComponent } from './componentes/dispositivos/imagen-boya/imagen-boya.component';
+import { AuthGuard } from './guards/auth.guard';
+import { RoleguardGuard } from './guards/roleguard.guard';
 
 const routes: Routes = [
-  { path: '',   component: StartPageComponent },
-  {path: 'start-page', component: StartPageComponent},
-  {path: 'configuracion', component: ConfiguracionComponent},
-  {path: 'dispositivos', component: DispositivosComponent},
-  {path: 'editar-boya', component: EditarBoyaComponent},
-  {path: 'editar-boya/:id', component: EditarBoyaComponent},
-  {path: 'agregar-boya', component: AgregarBoyaComponent},
-  {path: 'registrarse', component: RegistrarseComponent},
-  {path: 'iniciar-sesion', component: IniciarSesionComponent},
-  {path: 'reportes', component: ReportesComponent},
-  {path: 'reporte/:id', component: ReporteBoyaComponent},
+  {
+    path: '',   component: StartPageComponent
+  },
+  {
+    path: 'start-page', component: StartPageComponent
+  },
+  {
+    path: 'configuracion', component: ConfiguracionComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'dispositivos', component: DispositivosComponent
+  },
+  {
+    path: 'editar-boya', component: EditarBoyaComponent
+
+  },
+  {
+    path: 'editar-boya/:id', component: EditarBoyaComponent
+  },
+  {
+    path: 'agregar-boya', component: AgregarBoyaComponent
+  },
+  {
+    path: 'imagen-boya/:id', component: ImagenBoyaComponent
+  },
+  {
+    path: 'registrarse', component: RegistrarseComponent
+  },
+  {
+    path: 'iniciar-sesion', component: IniciarSesionComponent
+  },
+  {
+    path: 'reportes', component: ReportesComponent
+  },
+  {
+    path: 'reporte/:id/:fromDate/:toDate', component: ReporteBoyaComponent
+  },
   // { path: '**', component: StartPageComponent },
   // { path: '',   redirectTo: 'start-page', pathMatch: 'full' },
 ];

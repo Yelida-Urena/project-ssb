@@ -7,37 +7,91 @@
       <table class="table">
         <thead class="table-dark">
           <tr>
+            <th scope="col" class="text-center">Nombre</th>
             <th scope="col" class="text-center">Ubicación</th>
-            <th scope="col" class="text-center">Rango de fecha</th>
             <th scope="col" class="text-center"> Ver reporte </th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let boya of Boyas; let iControl = index">
+            <td class="text-center"> {{ boya.nombre }} </td>
             <td class="text-center"> {{ boya.ubicacion }} </td>
-            <td>
-              <!-- <mat-form-field appearance="fill">
-                <mat-label>Enter a date range</mat-label>
-                <mat-date-range-input [rangePicker]="picker">
-                  <input matStartDate placeholder="Start date">
-                  <input matEndDate placeholder="End date">
-                </mat-date-range-input>
-                <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-date-range-picker #picker></mat-date-range-picker>
-              </mat-form-field> -->
-            </td>
             <td class="text-center">
-              <a class="btn btn-success"  role="button">
-                <!-- <fa-icon [icon]=""></fa-icon> -->
+              <a class="btn btn-success" role="button" (click)="openModal(boya.id)">
+                <fa-icon [icon]="reporte"></fa-icon>
               </a>
             </td>
           </tr>
         </tbody>
       </table>
+
+
+
     </div>
-
-
   </div>
-
 </div>
+
+
+
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display': displayModal}">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title justify-text-center">Seleccione un rango de fecha para generar el reporte solicitado</h4>
+      </div>
+      <div class="modal-body p-5" style="text-align: center; align-items: center;">
+
+        <div class="col-6">
+            <div class="input-group">
+              <input
+                class="form-control"
+                placeholder="dd/mm/yyyy"
+                name="d1"
+                #c1="ngModel"
+                [(ngModel)]="fromDate"
+                ngbDatepicker
+                #d1="ngbDatepicker"
+              />
+              <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d1.toggle(); setMinDate()" type="button"></button>
+          </div>
+
+          <pre>Model: {{ fromDate | json }}</pre>
+          <pre>State: {{ c1.status }}</pre>
+        </div>
+        <div class="col-6">
+            <div class="input-group">
+              <input
+                class="form-control"
+                placeholder="dd/mm/yyyy"
+                name="d2"
+                #c2="ngModel"
+                [(ngModel)]="toDate"
+                ngbDatepicker
+                #d2="ngbDatepicker"
+                [minDate]="minDate"
+              />
+              <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d2.toggle()" type="button" [disabled]="c1.status != 'VALID'"></button>
+          </div>
+
+          <pre>Model: {{ toDate | json }}</pre>
+          <pre>State: {{ c2.status }}</pre>
+        </div>
+
+      </div>
+      <div class="modal-footer" >
+        <button type="button" class="btn btn-warning"
+                (click)="generateReport()"
+                [disabled]=" (c2.status || c1.status) != 'VALID'">
+          Generar reporte
+        </button>
+        <button type="button" class="btn btn-danger"
+                (click)="closePopup()">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

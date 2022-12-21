@@ -22,7 +22,6 @@ export class AgregarBoyaComponent implements OnInit {
     this.formularioBoya = this.formulario.group({
       ubicacion: ['', Validators.required]
     });
-
   }
 
   ngOnInit(): void {

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { jsPDF } from 'jspdf';
+import { BehaviorSubject } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -7,15 +8,21 @@ export class ReportesService {
 
   constructor() { }
 
-  imprimir (encabezado: string[], cuerpo: Array<any>, titulo: string[], guardar?: boolean) {
+  private fromDateSource = new BehaviorSubject<string>('');
+  private toDateSource = new BehaviorSubject<string>('');
 
-    const doc = new jsPDF({
-      orientation: "portrait",
-      unit: "px",
-      format: "letter"
-    });
+  currentFromDate = this.fromDateSource.asObservable();
+  currenToDate = this.toDateSource.asObservable();
 
-    doc.text(titulo, doc.internal.pageSize.width /2, 25, {align: 'center'});
-
+  changeFromDate(fromDate: string){
+    this.fromDateSource.next(fromDate);
   }
+
+  changeToDate(toDate: string){
+    this.toDateSource.next(toDate);
+  }
+
+
+
+
 }
