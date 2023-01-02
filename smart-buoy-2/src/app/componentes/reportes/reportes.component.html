@@ -1,0 +1,91 @@
+<div class="container card">
+  <div class="card-header">
+    Elija la boya y rango de fecha de la que desea el reporte
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col" class="text-center">Nombre</th>
+            <th scope="col" class="text-center">Ubicación</th>
+            <th scope="col" class="text-center"> Ver reporte </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let boya of Boyas; let iControl = index">
+            <td class="text-center"> {{ boya.nombre }} </td>
+            <td class="text-center"> {{ boya.ubicacion }} </td>
+            <td class="text-center">
+              <a class="btn btn-success" role="button" (click)="openModal(boya.id)">
+                <fa-icon [icon]="reporte"></fa-icon>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display': displayModal}">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title justify-text-center">Seleccione un rango de fecha para generar el reporte solicitado</h4>
+      </div>
+      <div class="modal-body p-5" style="text-align: center; align-items: center;">
+
+        <div class="col-6">
+            <div class="input-group">
+              <input
+                class="form-control"
+                placeholder="dd/mm/yyyy"
+                name="d1"
+                #c1="ngModel"
+                [(ngModel)]="fromDate"
+                ngbDatepicker
+                #d1="ngbDatepicker"
+              />
+              <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d1.toggle(); setMinDate()" type="button"></button>
+          </div>
+        </div>
+        <div class="col-6">
+            <div class="input-group">
+              <input
+                class="form-control"
+                placeholder="dd/mm/yyyy"
+                name="d2"
+                #c2="ngModel"
+                [(ngModel)]="toDate"
+                ngbDatepicker
+                #d2="ngbDatepicker"
+              />
+              <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d2.toggle()" type="button" [disabled]="c1.status != 'VALID'"></button>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="modal-footer" >
+        <button type="button" class="btn btn-warning"
+                (click)="generateReport()"
+                [disabled]=" (c2.status || c1.status) != 'VALID'">
+          Generar reporte
+        </button>
+        <button type="button" class="btn btn-danger"
+                (click)="closePopup()">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

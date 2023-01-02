@@ -1,0 +1,41 @@
+
+
+<div class="container card">
+  <div class="card-header">
+      <a class="btn btn-success" routerLink="/agregar-boya"> Agregar nuevo dispositivo </a>
+
+  </div>
+  <div class="card-body">
+    <h1>Lista de Boyas</h1>
+    <div class="table">
+      <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col" class="text-center">#</th>
+            <th scope="col" class="text-center">Nombre</th>
+            <th scope="col" class="text-center">Ubicación</th>
+            <th scope="col" class="text-center">Ver imágenes captadas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let boya of Boyas; let iControl = index">
+            <td class="text-center"> {{ iControl + 1 }} </td>
+            <td class="text-center"> {{ boya.nombre }} </td>
+            <td class="text-center"> {{ boya.ubicacion }} </td>
+            <td class="text-center">
+              <a class="btn btn-warning" routerLink="/imagen-boya/{{ boya.id }}" role="button">
+                <fa-icon [icon]="camara"></fa-icon>
+              </a>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+  </div>
+
+</div>
+
+

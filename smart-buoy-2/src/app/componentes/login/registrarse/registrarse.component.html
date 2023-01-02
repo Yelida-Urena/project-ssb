@@ -1,0 +1,97 @@
+
+<div class="outer">
+  <div class="container">
+    <div class="row">
+      <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+        <div class="panel border bg-white">
+          <div class="panel-heading">
+            <h3 class="pt-3 font-weight-bold">
+              Registrarse
+            </h3>
+          </div>
+          <div class="panel-body p-3">
+            <form [formGroup]="formularioRegistro" (ngSubmit)="onSubmit()">
+
+              <!-- Nombre(s) -->
+              <div class="form-group pt-3">
+                <div class="input-field">
+                  <i class="fa fa-user p-2"></i>
+                    <input class="input" type="text" formControlName="nombre" placeholder="Nombre(s)" />
+                </div>
+              </div>
+
+              <!-- Apellido(s) -->
+              <div class="form-group pt-3">
+                <div class="input-field">
+                  <i class="fa fa-user p-2"></i>
+                    <input class="input" type="text" formControlName="apellido" placeholder="Apellido(s)" />
+                </div>
+              </div>
+
+              <!-- Correo electrónico -->
+              <div class="form-group pt-3">
+                <div class="input-field">
+                  <i class="fa fa-user p-2"></i>
+                    <input class="input" type="text" formControlName="correo" placeholder="Correo electrónico" />
+                    <div class="error" *ngIf="formularioRegistro.controls['usuario'].hasError('required') && formularioRegistro.controls['usuario'].touched">
+                      Por favor ingrese su correo electrónico
+                    </div>
+                  </div>
+              </div>
+
+              <!-- Nombre de usuario -->
+              <div class="form-group pt-3">
+                <div class="input-field">
+                  <i class="fa fa-user p-2"></i>
+                    <input class="input" type="text" formControlName="usuario" placeholder="Nombre de usuario" autocomplete="off"/>
+                    <div class="error" *ngIf="formularioRegistro.controls['usuario'].hasError('required') && formularioRegistro.controls['usuario'].touched">
+                      Por favor ingrese su nombre de usuario
+                    </div>
+                </div>
+              </div>
+
+              <!-- Contraseña -->
+              <div class="form-group pt-3">
+                <div class="input-field">
+                  <i class="fa fa-lock p-2"></i>
+                  <input class="input" [type]="type ? 'text' : 'password'" formControlName="contrasena" placeholder="Contraseña" />
+                  <div class="error" *ngIf="formularioRegistro.controls['contrasena'].hasError('required') && formularioRegistro.controls['contrasena'].touched">
+                    Por favor ingrese su contraseña
+                  </div>
+                  <i class="fa" [ngClass]="{'fa-eye-slash': !type,'fa-eye': type}" (click)="hideShowPassword()"></i>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block mt-4 w-100">Registrarse</button>
+              <div class="text-center pt-4 text-muted">
+                ¿Ya tienes una cuenta?
+                <a id="forget" routerLink="/iniciar-sesion">
+                  Inicia sesión
+                </a>
+              </div>
+            </form>
+          </div>
+
+          <!-- <div class="text-center mb-3 mt-3 mx-3 bordert">
+
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="fa fa-facebook-f"></i>
+            </button>
+
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="fa fa-google"></i>
+            </button>
+
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="fa fa-twitter"></i>
+            </button>
+
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="fa fa-github"></i>
+            </button>
+          </div> -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<?php
+
+$filepath = "./folder/file.txt";
+
+$filepathArray = pathinfo($filepath);
+
+var_dump($filepathArray);
+echo "<br><br>";
+echo $filepath;
+echo "<br>";
+echo $filepathArray['dirname'];
+echo "<br>";
+echo $filepathArray['basename'];
+echo "<br>";
+echo $filepathArray['filename'];
+echo "<br>";
+echo $filepathArray['extension'];
+
+?>

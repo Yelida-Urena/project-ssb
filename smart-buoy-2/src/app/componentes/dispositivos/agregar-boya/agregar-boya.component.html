@@ -1,0 +1,46 @@
+
+<div class="card w-50 mx-auto mt-5">
+  <div class="card-header text-center">
+    Agregar nueva boya
+  </div>
+  <div class="card-body">
+
+    <form ngNativeValidate [formGroup]="formularioBoya" (ngSubmit)="enviarDatos()">
+
+      <div class="mb-3">
+        <label for="" class="form-label">Nombre:</label>
+        <input required type="text"
+          class="form-control" formControlName="nombre" name="" id="" placeholder="Nombre de la boya" >
+      </div>
+
+      <div class="mb-3">
+        <label for="" class="form-label">De clic en el lugar del mapa donde se ubicará la boya:</label>
+        <input required type="text" value="{{ this.center.lat + ',' + this.center.lng }}"
+          class="form-control" formControlName="ubicacion" name="" id="" placeholder="Elija la ubicación de la boya" >
+      </div>
+
+      <div #mapContainer id="map">
+
+        <google-map height="400px"
+          width="725px"
+          [center]="center"
+          [zoom]="zoom"
+          [options]="options"
+          (mapClick)="moveMap($event)"
+          (mapMousemove)="move($event)">
+
+        </google-map>
+        <div>Latitude: {{display?.lat}}</div>
+        <div>Longitude: {{display?.lng}}</div>
+
+      </div>
+
+      <div class="btn-group d-flex justify-content-center" role="group" aria-label="">
+        <button type="summit" class="btn btn-success">AGREGAR</button>
+        <button type="button" class="btn btn-primary" routerLink="/dispositivos">CANCELAR</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+

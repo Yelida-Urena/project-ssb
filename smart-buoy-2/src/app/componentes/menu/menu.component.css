@@ -1,0 +1,15 @@
+
+.navbar{
+  background-color:#052634;
+}
+
+.navbar-brand{
+  font-family:'Courier New', Courier, monospace;
+}
+
+.nav-pills > .active > a, .nav-pills > .active > a:hover {
+  background-color: red;
+}
+
+
+/* 669999 &  33CCCC */
