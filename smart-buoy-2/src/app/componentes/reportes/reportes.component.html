@@ -55,9 +55,6 @@
               />
               <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d1.toggle(); setMinDate()" type="button"></button>
           </div>
-
-          <pre>Model: {{ fromDate | json }}</pre>
-          <pre>State: {{ c1.status }}</pre>
         </div>
         <div class="col-6">
             <div class="input-group">
@@ -69,13 +66,10 @@
                 [(ngModel)]="toDate"
                 ngbDatepicker
                 #d2="ngbDatepicker"
-                [minDate]="minDate"
               />
               <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d2.toggle()" type="button" [disabled]="c1.status != 'VALID'"></button>
           </div>
 
-          <pre>Model: {{ toDate | json }}</pre>
-          <pre>State: {{ c2.status }}</pre>
         </div>
 
       </div>

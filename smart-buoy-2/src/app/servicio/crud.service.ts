@@ -30,6 +30,10 @@ export class CrudService {
     return this.clienteHttp.delete( this.API + 'delete.php?id=' + id);
   }
 
+  disable( id:any ) {
+    return this.clienteHttp.get( this.API + 'disable.php?id=' + id );
+  }
+
   editarBoya( datosBoya:any ) {
     return this.clienteHttp.put( this.API + "update.php", datosBoya );
   }

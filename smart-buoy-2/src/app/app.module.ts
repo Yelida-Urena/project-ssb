@@ -32,9 +32,12 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { ChartModule } from '@syncfusion/ej2-angular-charts';
 
+import { AgmCoreModule } from '@agm/core';
+
 import { GoogleMapsModule } from '@angular/google-maps'
 
-import { AgmCoreModule } from '@agm/core';
+import { LightboxModule } from 'ngx-lightbox';
+
 
 
 @NgModule({
@@ -63,8 +66,8 @@ import { AgmCoreModule } from '@agm/core';
     FontAwesomeModule,
     FormsModule,
     NgbDatepickerModule,
-    NgxChartsModule,
     ChartModule,
+    LightboxModule,
     GoogleMapsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBNnbwvBf3cNqXLAOG8bt5zpuFmgeiIzjs',

@@ -14,7 +14,7 @@
               <div class="form-group pt-3">
                 <div class="input-field">
                   <i class="fa fa-user p-2"></i>
-                    <input class="input" type="text" formControlName="usuario" placeholder="Nombre de usuario" autocomplete="off"/>
+                    <input class="input" #name type="text" formControlName="usuario" placeholder="Nombre de usuario" autocomplete="off"/>
                     <div class="error" *ngIf="loginForm.controls['usuario'].hasError('required') && loginForm.controls['usuario'].touched">
                       Por favor ingrese su nombre de usuario
                     </div>

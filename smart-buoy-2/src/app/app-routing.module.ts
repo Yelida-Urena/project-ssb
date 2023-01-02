@@ -15,7 +15,8 @@ import { RoleguardGuard } from './guards/roleguard.guard';
 
 const routes: Routes = [
   {
-    path: '',   component: StartPageComponent
+    path: '',   component: StartPageComponent,
+
   },
   {
     path: 'start-page', component: StartPageComponent
@@ -23,16 +24,16 @@ const routes: Routes = [
   {
     path: 'configuracion', component: ConfiguracionComponent,
     canActivate: [AuthGuard]
-  },
-  {
-    path: 'dispositivos', component: DispositivosComponent
-  },
-  {
-    path: 'editar-boya', component: EditarBoyaComponent
 
   },
   {
-    path: 'editar-boya/:id', component: EditarBoyaComponent
+    path: 'dispositivos', component: DispositivosComponent,
+    canActivate: [AuthGuard]
+
+  },
+  {
+    path: 'editar-boya/:id', component: EditarBoyaComponent,
+    canActivate: [RoleguardGuard]
   },
   {
     path: 'agregar-boya', component: AgregarBoyaComponent
@@ -47,10 +48,12 @@ const routes: Routes = [
     path: 'iniciar-sesion', component: IniciarSesionComponent
   },
   {
-    path: 'reportes', component: ReportesComponent
+    path: 'reportes', component: ReportesComponent,
+    canActivate: [AuthGuard]
   },
   {
-    path: 'reporte/:id/:fromDate/:toDate', component: ReporteBoyaComponent
+    path: 'reporte/:id/:fromDate/:toDate', component: ReporteBoyaComponent,
+    canActivate: [AuthGuard]
   },
   // { path: '**', component: StartPageComponent },
   // { path: '',   redirectTo: 'start-page', pathMatch: 'full' },

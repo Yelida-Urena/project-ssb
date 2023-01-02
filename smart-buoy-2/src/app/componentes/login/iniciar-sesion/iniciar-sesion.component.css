@@ -1,5 +1,6 @@
- .outer {
-  height: 90vh;
+.outer {
+  height: 92vh;
+  background-image: url('src/assets/images/rep2.jpg');
 }
 
 .panel-heading {

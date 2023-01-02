@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 import { CrudService } from 'src/app/servicio/crud.service';
@@ -13,17 +13,24 @@ import { AgmCoreModule } from '@agm/core';
   templateUrl: './agregar-boya.component.html',
   styleUrls: ['./agregar-boya.component.css']
 })
-export class AgregarBoyaComponent implements OnInit {
+export class AgregarBoyaComponent implements AfterViewInit {
+@ViewChild('mapContainer', {static: false}) gmap: ElementRef;
 
   formularioBoya: any;
 
-  title: string = 'AGM project';
-  latitude!: number;
-  longitude!: number;
+  display: any;
+  center: google.maps.LatLngLiteral = {
+      lat: 19.029408,
+      lng:  -70.706486,
+  };
+  zoom = 6;
 
-  @ViewChild('search')
-  public searchElementRef!: ElementRef;
-
+  options: google.maps.MapOptions = {
+    mapTypeId: 'hybrid',
+    zoomControl: false,
+    scrollwheel: true,
+    disableDoubleClickZoom: true,
+  };
 
   constructor(
     public formulario:FormBuilder,
@@ -33,32 +40,35 @@ export class AgregarBoyaComponent implements OnInit {
     private ngZone: NgZone) {
 
     this.formularioBoya = this.formulario.group({
+      nombre: ['', Validators.required],
       ubicacion: ['', Validators.required]
     });
   }
 
-  ngOnInit(): void {
+  ngAfterViewInit() : void {
+  }
+  moveMap(event: google.maps.MapMouseEvent) {
+    if (event.latLng != null) this.center = (event.latLng.toJSON());
+    console.log(this.formularioBoya.value);
+
+  }
+
+  move(event: google.maps.MapMouseEvent) {
+      if (event.latLng != null) this.display = event.latLng.toJSON();
 
   }
 
   enviarDatos(): any {
+    this.formularioBoya.get('ubicacion').setValue(this.center.lat + ',' + this.center.lng);
     console.log(this.formularioBoya.value);
 
     this.crudService.agregarBoya(this.formularioBoya.value).subscribe((data:any) => {
       this.router.navigateByUrl('/dispositivos');
     });
 
-    this.mapsAPILoader.load().then(() => {
-    });
-
   }
 
-  onMapClicked(event: any){
-    console.table(event.coords);
-    this.latitude = event.coords.lat;
-    this.longitude = event.coords.lng;
 
-  }
 
 }
 

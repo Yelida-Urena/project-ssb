@@ -5,6 +5,8 @@ import { Boya } from 'src/app/modelos/Boya';
 
 import { faPen } from '@fortawesome/free-solid-svg-icons'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { LoginService } from 'src/app/servicio/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-configuracion',
@@ -14,12 +16,15 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 export class ConfiguracionComponent implements OnInit {
 
   Boyas : any;
+  role:any;
 
   penIcon = faPen;
   trashIcon = faTrashAlt;
 
   constructor(
     private crudService:CrudService,
+    private service:LoginService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -27,16 +32,25 @@ export class ConfiguracionComponent implements OnInit {
       console.log(data);
       this.Boyas = data.data;
     });
+
+    const username = localStorage.getItem("username");
+    console.log(username);
+
+    this.service.haveRoleAccess(username).subscribe((data: any) => {
+      this.role = data.data;
+      console.log(this.role[0].role);
+    });
   }
 
-  borrarRegistro(boya:any) {
-    if(window.confirm("¿Está seguro que desea borrar este registro?")) {
-      this.crudService.borrarBoya(boya.id).subscribe((data) => {
+
+  disableRegistro(boya:any) {
+    if (this.role[0].role === "admin") {
+      this.crudService.disable(boya.id).subscribe((data) => {
         this.Boyas = this.Boyas.filter((u: any) => u != boya);
       });
+    }else{
+      alert('No tiene permisos');
     }
-
-
   }
 
 }

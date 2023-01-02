@@ -1,7 +1,7 @@
 .outer {
-  height: 90vh;
+  height: 92vh;
+  background-image: url('src/assets/images/rep1.jpg');
 }
-
 .panel-heading {
   text-align: center;
   margin-bottom: 10px;

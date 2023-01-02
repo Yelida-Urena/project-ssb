@@ -33,13 +33,6 @@ export class ReporteBoyaComponent implements OnInit {
   from: any;
   to: any;
 
-  single: any[] = [];
-
-  multi: any[] = [];
-
-
-  view: any[] = [700, 300];
-
   // options
   showXAxis = true;
   showYAxis = true;
@@ -87,7 +80,7 @@ export class ReporteBoyaComponent implements OnInit {
       this.sensorTemp = data.data;
       console.log(data);
       console.log(this.sensorTemp);
-      this.single = data.data.map((datum:any)  =>  ({ name: datum.temperatura, value: datum.humedad}));
+
       this.chartData = data.data.map((datum:any)  =>  ({ y: datum.temperatura, x: new Date(datum.fecha)}));
       this.chartData2 = data.data.map((datum:any)  =>  ({ y: datum.humedad, x: new Date(datum.fecha)}));
       // this.multi = data.data.map((datum:any) => datum.series = datum.series.map( (dataItem:any) => { dataItem.name = new Date(dataItem.name); return dataItem;}));

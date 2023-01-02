@@ -11,6 +11,7 @@ export class AppComponent {
   loginbtn: boolean = true;
   logoutbtn: boolean = false;
   title = 'smart-buoy-2';
+  loginStatus: any;
 
   constructor(
     private service: LoginService,
@@ -18,6 +19,10 @@ export class AppComponent {
       this.service.logInUsuario.subscribe((data:string) => {
         this.loginbtn = false;
         this.logoutbtn = true;
+      });
+
+      this.service.isLoggedIn.subscribe((status) => {
+        this.loginStatus = status;
       });
 
     // service.getLoggedInName.subscribe(name => this.changeName(name));
@@ -32,6 +37,8 @@ export class AppComponent {
     //   console.log(this.loginbtn);
     // }
 
+    this.service.deleteToken();
+
   }
 
 
@@ -41,8 +48,18 @@ export class AppComponent {
     this.loginbtn = !name;
   }
 
-  logout(){
-    // this.service.deleteToken();
-    window.location.href = "/start-page";
+  login() {
+    this.service.loginUser();
   }
+
+  logout() {
+    this.service.logoutUser();
+    window.location.href = "/start-page";
+    this.service.deleteToken();
+  }
+
+  // logout(){
+  //   // this.service.deleteToken();
+  //   window.location.href = "/start-page";
+  // }
 }

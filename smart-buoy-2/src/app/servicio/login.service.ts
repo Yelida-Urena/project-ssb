@@ -1,7 +1,7 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Usuario } from '../modelos/Usuario';
 
 @Injectable({
@@ -10,8 +10,10 @@ import { Usuario } from '../modelos/Usuario';
 export class LoginService {
 
   API: string = 'https://localhost/proyecto/';
+  role: any = '';
 
   @Output() logInUsuario: EventEmitter<any> = new EventEmitter();
+  isLoggedIn = new BehaviorSubject(false);
 
   constructor(private clienteHttp:HttpClient) { }
 
@@ -24,6 +26,13 @@ export class LoginService {
     return this.clienteHttp.post( this.API + "login.php", usuario, contrasena);
   }
 
+  logoutUser() {
+    this.isLoggedIn.next(false);
+  }
+  loginUser() {
+    this.isLoggedIn.next(true);
+  }
+
   changeMenu(msg: string) {
     this.logInUsuario.emit(true);
   }
@@ -32,33 +41,28 @@ export class LoginService {
   //   localStorage.setItem('token', token);
   // }
 
-  // getToken() {
-  //   return localStorage.getItem('token');
-  // }
-
-  // deleteToken() {
-  //   localStorage.removeItem('token');
-  // }
-
-   isLoggegIn() {
-    return localStorage.getItem("username")!=null;
-  //   const userToken = this.getToken();
-
-  //   if (userToken != null) {
-  //     return true;
-  //   }
-
-  //   return false;
+   getToken() {
+     return localStorage.getItem('username');
    }
 
-   haveRoleAccess(menuname:any){
-    const role = localStorage.getItem("role");
+  deleteToken() {
+    localStorage.removeItem('username');
+  }
 
-    if (role == 'admin') {
+
+
+  isLoggegIn() {
+    const userToken = localStorage.getItem('username');
+
+    if (userToken != null) {
       return true;
-    }else{
-      return false;
     }
-   }
+
+    return false;
+ }
+
+  haveRoleAccess(username: string){
+    return this.clienteHttp.get( this.API + "role.php?username=" + username);
+  }
 
 }

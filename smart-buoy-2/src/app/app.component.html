@@ -53,11 +53,11 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" *ngIf="loginbtn" routerLink="/iniciar-sesion" routerLinkActive="active">Iniciar sesión</a>
+                <a class="nav-link" *ngIf="!loginStatus" routerLink="/iniciar-sesion" routerLinkActive="active">Iniciar sesión</a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" *ngIf="logoutbtn" (click)="logout()" >Desconectarse</a>
+                <a class="nav-link" *ngIf="loginStatus" (click)="logout()" >Desconectarse</a>
                 <!-- <button type="button" *ngIf="logoutbtn" class="btn btn-block" (click)="logout()">Desconectarse</button> -->
               </li>
 

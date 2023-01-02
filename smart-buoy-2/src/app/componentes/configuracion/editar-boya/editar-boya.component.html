@@ -14,13 +14,13 @@
 
       <div class="mb-3">
         <label for="" class="form-label">Nombre:</label>
-        <input formControlName="nombre" type="text"
+        <input formControlName="nombre" type="text" [readOnly]="role()"
           class="form-control" name="" id="" aria-describedby="" placeholder="">
       </div>
 
       <div class="mb-3">
         <label for="" class="form-label">Ubicación:</label>
-        <input formControlName="ubicacion" type="text"
+        <input formControlName="ubicacion" type="text" readonly
           class="form-control" name="" id="" aria-describedby="" placeholder="">
       </div>
 

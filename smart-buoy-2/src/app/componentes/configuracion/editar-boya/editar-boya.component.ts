@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CrudService } from 'src/app/servicio/crud.service';
+import { LoginService } from 'src/app/servicio/login.service';
+import { faL } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-editar-boya',
@@ -19,7 +21,8 @@ export class EditarBoyaComponent implements OnInit {
     private activeRouter : ActivatedRoute,
     private crudService : CrudService,
     public formulario : FormBuilder,
-    public router : Router
+    public router : Router,
+    private service : LoginService
   ) {
 
     this.formularioBoya = this.formulario.group({
@@ -39,6 +42,24 @@ export class EditarBoyaComponent implements OnInit {
         this.formularioBoya.patchValue(data.data);
       });
     }
+
+    const username = localStorage.getItem("username");
+    console.log(username);
+
+    this.service.haveRoleAccess(username).subscribe((data: any) => {
+      this.role = data.data;
+      console.log(this.role[0].role);
+    });
+  }
+
+  role(){
+
+    if (this.role[0].role === "admin") {
+      return false;
+    }else{
+      return true;
+    }
+
   }
 
   enviarDatos():any {

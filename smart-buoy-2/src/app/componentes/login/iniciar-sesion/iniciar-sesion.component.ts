@@ -17,6 +17,7 @@ export class IniciarSesionComponent implements OnInit {
   message: any;
   token: any;
   submitted: boolean | undefined;
+  loginStatus:any;
 
   loginUser = {
     id: null,
@@ -31,14 +32,14 @@ export class IniciarSesionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.token = window.localStorage.getItem('token');
-    if(!this.token) {
-      this.router.navigate(["/iniciar-sesion"]);
-    };
 
     this.loginForm = this.formBuilder.group({
       usuario: ['', Validators.compose([Validators.required])],
       contrasena: ['', Validators.required]
+    });
+
+    this.service.isLoggedIn.subscribe((status) => {
+      this.loginStatus = status;
     });
   }
 
@@ -51,6 +52,8 @@ export class IniciarSesionComponent implements OnInit {
     this.submitted = true;
 
     localStorage.setItem("username", this.loginForm.controls['usuario'].value);
+
+    this.service.loginUser();
 
     console.log(this.loginForm.value);
     if (this.loginForm.invalid)
@@ -65,7 +68,7 @@ export class IniciarSesionComponent implements OnInit {
       // this.message = data.message;
       this.router.navigate(["/start-page"]);
       console.log("Inicio de sesion exitoso");
-      this.service.changeMenu('Usuario ingresado');
+      // this.service.changeMenu('Usuario ingresado');
       // if(data.token){
       //   window.localStorage.setItem('token', data.token);
       //   this.router.navigate(["/start-page"]);
