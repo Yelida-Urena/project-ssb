@@ -37,6 +37,7 @@ import { AgmCoreModule } from '@agm/core';
 import { GoogleMapsModule } from '@angular/google-maps'
 
 import { LightboxModule } from 'ngx-lightbox';
+import { SobreNosotrosComponent } from './componentes/sobre-nosotros/sobre-nosotros.component';
 
 
 
@@ -53,7 +54,8 @@ import { LightboxModule } from 'ngx-lightbox';
     MenuComponent,
     ReportesComponent,
     ReporteBoyaComponent,
-    ImagenBoyaComponent
+    ImagenBoyaComponent,
+    SobreNosotrosComponent
   ],
   imports: [
     BrowserModule,

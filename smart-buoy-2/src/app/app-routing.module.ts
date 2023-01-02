@@ -12,6 +12,7 @@ import { ReporteBoyaComponent } from './componentes/reportes/reporte-boya/report
 import { ImagenBoyaComponent } from './componentes/dispositivos/imagen-boya/imagen-boya.component';
 import { AuthGuard } from './guards/auth.guard';
 import { RoleguardGuard } from './guards/roleguard.guard';
+import { SobreNosotrosComponent } from './componentes/sobre-nosotros/sobre-nosotros.component';
 
 const routes: Routes = [
   {
@@ -54,6 +55,9 @@ const routes: Routes = [
   {
     path: 'reporte/:id/:fromDate/:toDate', component: ReporteBoyaComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'about-us', component: SobreNosotrosComponent,
   },
   // { path: '**', component: StartPageComponent },
   // { path: '',   redirectTo: 'start-page', pathMatch: 'full' },
