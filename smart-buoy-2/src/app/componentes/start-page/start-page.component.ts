@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/servicio/login.service';
 
 @Component({
   selector: 'app-start-page',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StartPageComponent implements OnInit {
 
-  constructor() { }
+  email:any;
+
+  constructor(
+    private router: Router,
+    private service: LoginService,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  registrate() {
+    this.service.sendEmail(this.email);
+    this.router.navigate(['/registrarse']);
   }
 
 }

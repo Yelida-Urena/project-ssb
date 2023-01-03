@@ -37,7 +37,7 @@ export class AppComponent {
     //   console.log(this.loginbtn);
     // }
 
-    this.service.deleteToken();
+    // this.service.deleteToken();
 
   }
 

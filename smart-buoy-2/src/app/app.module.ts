@@ -28,7 +28,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgChartsModule } from 'ng2-charts';
 
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { ChartModule } from '@syncfusion/ej2-angular-charts';
 
@@ -37,6 +36,7 @@ import { AgmCoreModule } from '@agm/core';
 import { GoogleMapsModule } from '@angular/google-maps'
 
 import { LightboxModule } from 'ngx-lightbox';
+import { SobreNosotrosComponent } from './componentes/sobre-nosotros/sobre-nosotros.component';
 
 
 
@@ -53,7 +53,8 @@ import { LightboxModule } from 'ngx-lightbox';
     MenuComponent,
     ReportesComponent,
     ReporteBoyaComponent,
-    ImagenBoyaComponent
+    ImagenBoyaComponent,
+    SobreNosotrosComponent
   ],
   imports: [
     BrowserModule,

@@ -6,7 +6,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { ViewChild, ElementRef, NgZone } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
-import { AgmCoreModule } from '@agm/core';
 
 @Component({
   selector: 'app-agregar-boya',

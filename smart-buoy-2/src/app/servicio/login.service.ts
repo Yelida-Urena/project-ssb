@@ -13,9 +13,18 @@ export class LoginService {
   role: any = '';
 
   @Output() logInUsuario: EventEmitter<any> = new EventEmitter();
+
   isLoggedIn = new BehaviorSubject(false);
 
+  private email = new BehaviorSubject<string>('');
+
+  emailUsuario = this.email.asObservable();
+
   constructor(private clienteHttp:HttpClient) { }
+
+  sendEmail(email: string){
+    this.email.next(email);
+  }
 
   registro( registroUsuario: Usuario ){
     return this.clienteHttp.post( this.API + "registro.php", registroUsuario);

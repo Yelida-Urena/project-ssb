@@ -23,6 +23,7 @@ export class RegistrarseComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     this.formularioRegistro = this.formBuilder.group({
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
@@ -30,6 +31,8 @@ export class RegistrarseComponent implements OnInit {
       usuario: ['', Validators.required],
       contrasena: ['', Validators.required]
     });
+
+    this.service.emailUsuario.subscribe(correo => this.formularioRegistro['correo'].value = correo);
 
     this.service.isLoggedIn.subscribe((status) => {
       this.loginStatus = status;
