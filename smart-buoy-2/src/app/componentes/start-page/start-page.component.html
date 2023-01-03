@@ -64,7 +64,7 @@
 
                 <div class="col h-100">
                   <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3 text-center"><i class="bi bi-lightbulb"></i></div>
-                  <h2 class="h5">¿Cómo identificamos el sargazo?</h2>
+                  <h2 class="h5">¿Cómo surge el sargazo?</h2>
                   <p class="mb-0">El aumento de la temperatura del agua, el calentamiento global y los diferentes contaminantes arrojados a los mares favorecen el crecimiento excesivo del sargazo.</p>
                 </div>
               </div>
@@ -169,8 +169,8 @@
               </div>
               <div class="ms-xl-4">
                 <div class="input-group mb-2">
-                  <input class="form-control" type="text" placeholder="Correo electrónico..." aria-label="Email address..." aria-describedby="button-newsletter" />
-                  <button class="btn btn-outline-light" id="button-newsletter" type="button">Regístrate</button>
+                  <input class="form-control" type="text" placeholder="Correo electrónico..." [(ngModel)]="email" aria-label="Email address..." aria-describedby="button-newsletter" />
+                  <button class="btn btn-outline-light" id="button-newsletter" type="button" (click)="registrate()">Regístrate</button>
                 </div>
                 <div class="small text-white-50">Nos preocupamos por tu privacidad, nunca compartiremos tu información.</div>
               </div>
@@ -184,13 +184,6 @@
     <div class="container px-5">
       <div class="row align-items-center justify-content-between flex-column flex-sm-row">
         <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Sensorial Smart Buoy 2022</div></div>
-        <div class="col-auto">
-          <a class="link-light small" href="#!">Privacidad</a>
-          <span class="text-white mx-1">&middot;</span>
-          <a class="link-light small" href="#!">Términos</a>
-          <span class="text-white mx-1">&middot;</span>
-          <a class="link-light small" href="#!">Contacto</a>
-        </div>
       </div>
     </div>
   </footer>

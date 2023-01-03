@@ -28,7 +28,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgChartsModule } from 'ng2-charts';
 
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { ChartModule } from '@syncfusion/ej2-angular-charts';
 

@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from 'src/app/servicio/crud.service';
 import { SensoresService } from 'src/app/servicio/sensores.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
 import { ReportesService } from 'src/app/servicio/reportes.service';
 import { Boya } from 'src/app/modelos/Boya';
 import { Pipe, PipeTransform } from '@angular/core';
+
+import { Subscription } from 'rxjs';
+
+export let browserRefresh = false;
 
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
@@ -53,16 +57,22 @@ export class ReporteBoyaComponent implements OnInit {
   public title2: string = '';
   public primaryYAxis2: any;
 
+  subscription: Subscription;
+
   constructor(
     private service: CrudService,
     private serviceSensor: SensoresService,
     private activeRouter: ActivatedRoute,
-    private dates: ReportesService
-  ) {  }
+    private dates: ReportesService,
+    private router: Router
+  ) {
+
+   }
 
   ngOnInit(): void {
 
     this.boya_id = this.activeRouter.snapshot.params['id'];
+
 
 
     this.service.obtenerBoya(this.boya_id).subscribe((data:any) => {
@@ -76,7 +86,7 @@ export class ReporteBoyaComponent implements OnInit {
 
     console.log(this.to, this.from);
 
-    this.serviceSensor.obtenerDatos(this.boya_id, this.from, this.to).subscribe((data:any) => {
+    this.serviceSensor.obtenerDatosTempHum(this.boya_id, this.from, this.to).subscribe((data:any) => {
       this.sensorTemp = data.data;
       console.log(data);
       console.log(this.sensorTemp);
@@ -85,6 +95,8 @@ export class ReporteBoyaComponent implements OnInit {
       this.chartData2 = data.data.map((datum:any)  =>  ({ y: datum.humedad, x: new Date(datum.fecha)}));
       // this.multi = data.data.map((datum:any) => datum.series = datum.series.map( (dataItem:any) => { dataItem.name = new Date(dataItem.name); return dataItem;}));
     });
+
+
 
     this.primaryXAxis = {
       valueType: 'DateTime',
